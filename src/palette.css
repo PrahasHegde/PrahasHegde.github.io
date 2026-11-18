@@ -1,0 +1,126 @@
+/* =====================================================================
+   Palette: "Ink & Teal"
+   Warm neutrals + one deep-teal accent. Loaded last; overrides earlier tokens.
+   To retune the whole site, change the tokens in this file.
+   ===================================================================== */
+
+:root,
+:root[data-theme="light"] {
+  --bg: #F7F6F2;          /* warm paper */
+  --bg-2: #EFEDE7;
+  --surface: #FFFFFF;
+  --ink: #16181D;
+  --ink-2: #3B404B;
+  --muted: #6B7080;
+  --line: #E4E1D9;
+  --line-2: #D2CEC4;
+
+  --accent: #0F766E;      /* deep teal */
+  --accent-ink: #0B5D57;
+  --accent-soft: #DCEFEB;
+  --on-accent: #FFFFFF;
+  --live: #15803D;
+  --live-soft: rgba(21, 128, 61, .14);
+
+  /* category colours: muted, one family */
+  --c-agents: #B4542D;    /* terracotta */
+  --c-rag: #0F766E;       /* teal */
+  --c-eval: #B7791F;      /* ochre */
+  --c-cv: #557A2E;        /* sage */
+  --c-data: #3F5F9E;      /* slate blue */
+
+  --node-fill: #FFFFFF;
+  --me: #16181D;
+  --me-ink: #F7F6F2;
+
+  --grad: linear-gradient(var(--accent), var(--accent));
+  --glass: rgba(255, 255, 255, .78);
+  --glass-line: rgba(22, 24, 29, .08);
+  --glow: rgba(15, 118, 110, .08);
+  --shadow: 0 1px 2px rgba(22, 24, 29, .04), 0 10px 30px -18px rgba(22, 24, 29, .18);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0F1012;          /* graphite */
+  --bg-2: #141518;
+  --surface: #18191D;
+  --ink: #ECEBE6;         /* warm white */
+  --ink-2: #C8C6BF;
+  --muted: #8E8C86;
+  --line: rgba(255, 255, 255, .07);
+  --line-2: rgba(255, 255, 255, .13);
+
+  --accent: #5BC2B1;      /* teal, lifted for dark */
+  --accent-ink: #8AD8CB;
+  --accent-soft: rgba(91, 194, 177, .13);
+  --on-accent: #0F1012;
+  --live: #4ADE80;
+  --live-soft: rgba(74, 222, 128, .16);
+
+  --c-agents: #E2916F;
+  --c-rag: #5BC2B1;
+  --c-eval: #E3B661;
+  --c-cv: #A3C47E;
+  --c-data: #93A9DA;
+
+  --node-fill: #0F1012;
+  --me: #ECEBE6;
+  --me-ink: #0F1012;
+
+  --grad: linear-gradient(var(--accent), var(--accent));
+  --glass: rgba(24, 25, 29, .72);
+  --glass-line: rgba(255, 255, 255, .08);
+  --glow: rgba(91, 194, 177, .10);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 18px 40px -28px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+/* background: a single faint teal haze instead of multicolour blobs */
+.aurora i { opacity: 0 !important; }
+.aurora i:nth-child(1) { background: var(--accent); opacity: .07 !important; top: -38vmax; left: 10vmax; }
+:root[data-theme="dark"] .aurora i:nth-child(1) { opacity: .09 !important; }
+:root[data-theme="dark"] .hero::before { background-image: radial-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px); }
+
+/* headline: solid ink, not a fade */
+.hero h1 { background: none; color: var(--ink); -webkit-text-fill-color: currentColor; }
+.hero .lede em { font-weight: 600; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+
+/* buttons */
+.btn.primary,
+:root[data-theme="dark"] .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; box-shadow: 0 8px 24px -14px var(--accent); filter: none; }
+.btn.primary:hover,
+:root[data-theme="dark"] .btn.primary:hover { background: var(--accent-ink); color: var(--on-accent); }
+.hire,
+:root[data-theme="dark"] .hire { background: var(--ink); color: var(--bg); }
+.hire:hover { background: var(--accent); color: var(--on-accent); }
+.ask-input button,
+:root[data-theme="dark"] .ask-input button { background: var(--accent); color: var(--on-accent); }
+
+/* window: quiet chrome */
+.panel-win { box-shadow: var(--shadow), 0 30px 80px -40px rgba(0, 0, 0, .25); }
+.panel-win::before { display: none; }
+.win-bar .dots i:nth-child(n) { background: var(--line-2); }
+.msg.user, :root[data-theme="dark"] .msg.user { background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.msg.user p, :root[data-theme="dark"] .msg.user p { color: var(--ink); }
+.caret { background: var(--accent); }
+.led.busy { background: var(--c-eval); box-shadow: 0 0 8px var(--c-eval); }
+
+/* flagship card: hairline accent instead of rainbow border */
+.card.flag { background: var(--glass); border: 1px solid var(--glass-line); box-shadow: var(--shadow), inset 0 2px 0 var(--accent); }
+
+/* misc accents */
+.progress { background: var(--accent); }
+.timeline::before { background: var(--line); }
+.marquee span::before { color: var(--accent); }
+.contact, :root[data-theme="dark"] .contact { background: #111214; }
+.contact .mono { color: #8AD8CB; }
+.contact .email { border-bottom-color: #5BC2B1; }
+.contact .email:hover { color: #8AD8CB; }
+.contact .btn.primary { background: #5BC2B1; color: #0F1012; }
+.contact .btn.primary:hover { background: #8AD8CB; color: #0F1012; }
+.contact::before { background-image: radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.status { background: var(--surface); }
