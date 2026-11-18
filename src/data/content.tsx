@@ -231,6 +231,8 @@ export const about = {
 export type Interest = {
   id: string; title: string; line: string; icon: 'mountain' | 'run' | 'globe' | 'pen' | 'ball'; hue: Hue;
   photo?: string; pos?: string; alt?: string; link?: Link;
+  /** Photo credit for images that are not Prahas's own (required by CC licences). */
+  credit?: { text: string; href: string };
 };
 
 export const interests: Interest[] = [
@@ -241,8 +243,12 @@ export const interests: Interest[] = [
     photo: '/interests/paris-eiffel.jpg', pos: '50% 40%', alt: 'The Eiffel Tower lit up at night, seen down a Paris street',
     line: 'From Goa to Germany and onward. New cities, new food, and a lot of trains.' },
   { id: 'running', title: 'Running', icon: 'run', hue: 'eval',
+    photo: '/interests/running-trail.jpg', pos: '58% 55%', alt: 'A trail runner on a grassy mountain path above a wide valley',
+    credit: { text: 'Photo: Wikimedia Commons, public domain', href: 'https://commons.wikimedia.org/wiki/File:Runner-1-.jpg' },
     line: 'Steady kilometres before the day starts. Consistency beats intensity, in training and in engineering.' },
   { id: 'football', title: 'Football', icon: 'ball', hue: 'data',
+    photo: '/interests/football-messi.jpg', pos: '50% 45%', alt: 'Lionel Messi dribbling past AS Roma defenders in a 2015 pre-season match',
+    credit: { text: 'Photo: Justine Magny, CC BY-SA 2.0', href: 'https://commons.wikimedia.org/wiki/File:Messi_v_AS_Roma_2015.jpg' },
     line: 'Playing and watching. Team sport taught me most of what I know about passing the ball at the right moment.' },
   { id: 'blog', title: 'Travel writing', icon: 'pen', hue: 'agents',
     photo: '/interests/alpine-sunset.jpg', pos: '50% 62%', alt: 'Sunset over a ridge of Alpine peaks with streaks of cloud',

@@ -96,6 +96,7 @@ export function Interests() {
             return (
               <Reveal key={it.id} className={`interest${it.photo ? ' has-photo' : ''}`} style={dot(it.hue)} delay={i * 0.07}>
                 {it.photo && <img src={it.photo} alt={it.alt ?? ''} loading="lazy" style={{ objectPosition: it.pos }} />}
+                {it.credit && <a className="credit" href={it.credit.href}>{it.credit.text}</a>}
                 <div className="art" aria-hidden="true"><Icon /></div>
                 <div className="body">
                   <span className="chip-ic"><Icon /></span>

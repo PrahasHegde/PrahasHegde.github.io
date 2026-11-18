@@ -124,3 +124,9 @@
 .contact::before { background-image: radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .status { background: var(--surface); }
+
+/* photo credit on interest cards */
+.interest .credit{position:absolute;top:10px;right:12px;z-index:2;font-size:10.5px;line-height:1;padding:4px 7px;border-radius:6px;color:rgba(255,255,255,.82);background:rgba(0,0,0,.32);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);text-decoration:none;opacity:0;transition:opacity .25s}
+.interest:hover .credit,.interest .credit:focus-visible{opacity:1}
+@media (hover:none){.interest .credit{opacity:.85}}
+@media print{.interest .credit{display:none}}
