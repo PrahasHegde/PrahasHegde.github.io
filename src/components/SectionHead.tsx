@@ -5,7 +5,7 @@ export function SectionHead({ n, kicker, title, children }: { n: string; kicker:
   return (
     <Reveal className="sec-head">
       <div>
-        <span className="mono">{n} · {kicker}</span>
+        <span className="mono"><span className="slash">//</span> {n} · {kicker}</span>
         <h2>{title}</h2>
       </div>
       {children && <p>{children}</p>}

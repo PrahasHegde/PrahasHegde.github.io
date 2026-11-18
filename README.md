@@ -16,7 +16,11 @@ Components in `src/components/` only handle layout and behaviour.
 
 ## Features
 
-- Interactive, draggable map of the work in the hero
+- **Ask my portfolio** (hero): a retrieval engine over the site's own content that runs in the browser
+  (`src/lib/ask.ts`). Curated answers for common recruiter questions, BM25 for everything else, citations
+  that jump to the source section, a visible retrieval trace, and an explicit refusal when the site doesn't
+  mention something. No LLM, nothing invented. To add an answer, add an entry to `intents`.
+- Interactive, draggable map of the work in the hero ("Map of my work" tab)
 - Filterable project grid with layout animations
 - Command palette: `Ctrl K`, `⌘K` or `/`
 - Light and dark theme (`?theme=light` / `?theme=dark` forces one)

@@ -29,10 +29,29 @@ function ScrollProgress() {
   return <motion.div className="progress" style={{ scaleX }} aria-hidden="true" />;
 }
 
+/** One pointer listener drives the cursor spotlight on every card. */
+function useSpotlight() {
+  useEffect(() => {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    const SEL = '.card, .skill, .interest, .panel-win, .glance .cell';
+    const on = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest?.(SEL) as HTMLElement | null;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    };
+    document.addEventListener('pointermove', on, { passive: true });
+    return () => document.removeEventListener('pointermove', on);
+  }, []);
+}
+
 export default function App() {
   const [cmdOpen, setCmdOpen] = useState(false);
+  useSpotlight();
   return (
     <MotionConfig reducedMotion="user">
+      <div className="aurora" aria-hidden="true"><i /><i /><i /></div>
       <a className="skip" href="#work">Skip to work</a>
       <ScrollProgress />
       <Nav onSearch={() => setCmdOpen(true)} />
