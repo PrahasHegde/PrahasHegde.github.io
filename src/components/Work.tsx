@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion, useInView } from 'framer-motion';
 import { featured, filters, more, tiebreakChart, type Project, type Tag } from '../data/content';
 import { Arrow } from './Icons';
+import { Diagram } from './Diagrams';
 import { SectionHead } from './SectionHead';
 import { Reveal } from './Reveal';
 
@@ -58,6 +59,7 @@ function Card({ p, flag }: { p: Project; flag?: boolean }) {
   const main = (
     <>
       <Top p={p} />
+      {!flag && <Diagram id={p.id} />}
       <h3>{p.title}</h3>
       {p.what && <p className="what">{p.what}</p>}
       {p.body.map((b, i) => <p key={i} className={!p.metrics && i === p.body.length - 1 ? 'grow' : undefined}>{b}</p>)}

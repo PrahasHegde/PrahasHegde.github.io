@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { glance, profile } from '../data/content';
-import { mailto, printCV } from '../lib/ui';
+import { mailto, prefersReducedMotion, printCV } from '../lib/ui';
+import { EmbeddingField } from './EmbeddingField';
 import { Download, GitHub, LinkedIn, Mail } from './Icons';
 import { WorkGraph } from './WorkGraph';
 import { AskConsole } from './AskConsole';
@@ -14,11 +15,20 @@ const rise = (i: number) => ({
 
 const STACK = ['PyTorch', 'Hugging Face', 'LoRA', 'GRPO', 'RAG', 'Qdrant', 'FAISS', 'LangChain', 'Claude', 'Gemini', 'Qwen', 'Llama', 'Nemotron', 'Ollama', 'FastAPI', 'React', 'TypeScript', 'Docker', 'AWS', 'Palantir Foundry', 'OpenCV', 'Knowledge graphs'];
 
+const PHRASES = ['agents that cite their sources.', 'RAG that respects permissions.', 'evals that catch what models get wrong.', 'knowledge graphs for real factories.'];
+
 export function Hero() {
   const [tab, setTab] = useState<'ask' | 'map'>('ask');
+  const [phrase, setPhrase] = useState(0);
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const t = setInterval(() => setPhrase((p) => (p + 1) % PHRASES.length), 2800);
+    return () => clearInterval(t);
+  }, []);
   return (
     <>
       <header className="hero" id="top">
+        <EmbeddingField />
         <div className="wrap">
           <div className="hero-copy">
             <motion.div className="status reveal" {...rise(0)}>
@@ -27,9 +37,17 @@ export function Hero() {
             </motion.div>
             <motion.p className="kicker mono reveal" {...rise(1)}>{profile.role} · {profile.city}</motion.p>
             <motion.h1 className="reveal" {...rise(2)}>{profile.name}</motion.h1>
-            <motion.p className="lede reveal" {...rise(3)}>
+            <motion.p className="lede reveal lede-static" {...rise(3)}>
               I build AI systems <em>you can check</em>: agents that cite their sources, RAG that respects permissions, and evals that catch what models get wrong.
             </motion.p>
+            <motion.div className="lede-kinetic reveal" {...rise(3)} aria-hidden="true">
+              <span className="lk-lead">I build AI systems you can check:</span>
+              <span className="lk-rot">
+                {PHRASES.map((p, i) => (
+                  <span key={p} className={i === phrase ? 'on' : i === (phrase - 1 + PHRASES.length) % PHRASES.length ? 'out' : ''}>{p}</span>
+                ))}
+              </span>
+            </motion.div>
             <motion.p className="sub reveal" {...rise(4)}>
               AI Intern at BMW Group, building knowledge graphs and LLM systems for production plants. MSc Artificial Intelligence student at THWS.
             </motion.p>

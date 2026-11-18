@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { Work } from './components/Work';
 import { About, Contact, Experience, Interests, Skills } from './components/Sections';
 import { CommandPalette } from './components/CommandPalette';
+import { Manifesto, Numbers } from './components/Showcase';
 
 function Toast() {
   const [msg, setMsg] = useState('');
@@ -33,7 +34,7 @@ function ScrollProgress() {
 function useSpotlight() {
   useEffect(() => {
     if (!window.matchMedia('(hover: hover)').matches) return;
-    const SEL = '.card, .skill, .interest, .panel-win, .glance .cell';
+    const SEL = '.card, .skill, .interest, .panel-win, .glance .cell, .tile';
     const on = (e: PointerEvent) => {
       const el = (e.target as Element | null)?.closest?.(SEL) as HTMLElement | null;
       if (!el) return;
@@ -57,6 +58,8 @@ export default function App() {
       <Nav onSearch={() => setCmdOpen(true)} />
       <main>
         <Hero />
+        <Manifesto />
+        <Numbers />
         <Work />
         <Experience />
         <Skills />
