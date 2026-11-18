@@ -226,18 +226,32 @@ export const about = {
 };
 
 // Interests. To add a photo, put an image in public/interests/ and set `photo`,
-// e.g. photo: '/interests/hiking.jpg'. Without a photo the card shows an illustration.
-export type Interest = { id: string; title: string; line: string; icon: 'mountain' | 'run' | 'globe' | 'pen' | 'whisk'; hue: Hue; photo?: string; link?: Link };
+// e.g. photo: '/interests/hiking.jpg'; `pos` is the CSS object-position for the crop.
+// Without a photo the card shows an illustration.
+export type Interest = {
+  id: string; title: string; line: string; icon: 'mountain' | 'run' | 'globe' | 'pen' | 'ball'; hue: Hue;
+  photo?: string; pos?: string; alt?: string; link?: Link;
+};
 
 export const interests: Interest[] = [
   { id: 'hiking', title: 'Hiking', icon: 'mountain', hue: 'cv',
+    photo: '/interests/hiking-summit.jpg', pos: '50% 58%', alt: 'Prahas standing on a rocky summit above forested valleys and Alpine peaks',
     line: 'Long trails, early starts and no notifications. The best place I know to think a problem through.' },
+  { id: 'travel', title: 'Travelling', icon: 'globe', hue: 'rag',
+    photo: '/interests/paris-eiffel.jpg', pos: '50% 40%', alt: 'The Eiffel Tower lit up at night, seen down a Paris street',
+    line: 'From Goa to Germany and onward. New cities, new food, and a lot of trains.' },
   { id: 'running', title: 'Running', icon: 'run', hue: 'eval',
     line: 'Steady kilometres before the day starts. Consistency beats intensity, in training and in engineering.' },
-  { id: 'travel', title: 'Travelling', icon: 'globe', hue: 'rag',
-    line: 'From Goa to Germany and onward. New cities, new food, and a lot of trains.' },
+  { id: 'football', title: 'Football', icon: 'ball', hue: 'data',
+    line: 'Playing and watching. Team sport taught me most of what I know about passing the ball at the right moment.' },
   { id: 'blog', title: 'Travel writing', icon: 'pen', hue: 'agents',
+    photo: '/interests/alpine-sunset.jpg', pos: '50% 62%', alt: 'Sunset over a ridge of Alpine peaks with streaks of cloud',
     line: 'I write up my trips on my travel blog: the places, the people and the small details worth remembering.' },
-  { id: 'pastry', title: 'Pastry chef', icon: 'whisk', hue: 'data',
-    line: 'Pastry is precision engineering you can eat: exact ratios, controlled temperatures and a lot of iteration.' },
+];
+
+// The photo strip under the interest cards.
+export const gallery: { src: string; alt: string; pos?: string }[] = [
+  { src: '/interests/valley-view.jpg', alt: 'Prahas crouching on a mountain viewpoint above a town in a wide Alpine valley', pos: '50% 60%' },
+  { src: '/interests/mountain-lake.jpg', alt: 'A turquoise mountain lake seen from a grassy slope, with snowy peaks behind' },
+  { src: '/interests/alpine-meadow.jpg', alt: 'A green meadow in the foreground with a range of snow-capped mountains', pos: '50% 55%' },
 ];

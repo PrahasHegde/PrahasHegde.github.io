@@ -49,7 +49,7 @@ function Compare() {
           </div>
         </div>
       ))}
-      <p className="foot">{tiebreakChart.foot}</p>
+      <p className="cmp-foot">{tiebreakChart.foot}</p>
     </div>
   );
 }

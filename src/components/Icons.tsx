@@ -41,7 +41,7 @@ export const Globe = (p: P) => (
 export const Pen = (p: P) => (
   <svg viewBox="0 0 24 24" {...stroke} aria-hidden="true" {...p}><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16Z" /><path d="m13.5 6.5 4 4M14 20h6" /></svg>
 );
-export const Whisk = (p: P) => (
-  <svg viewBox="0 0 24 24" {...stroke} aria-hidden="true" {...p}><path d="m4 20 6.5-6.5" /><path d="M10.5 13.5C9 9 12 3.5 16.5 3.5s5 3 3 6.5-6.5 5-9 3.5Z" /><path d="M12.2 11.8c1-3 3-5.5 5.3-6.6M13.2 12.8c2.7-1.1 5-3 6.1-5.3" /></svg>
+export const Ball = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} aria-hidden="true" {...p}><circle cx="12" cy="12" r="9" /><path d="m12 7.5 3.8 2.8-1.5 4.4H9.7l-1.5-4.4Z" /><path d="M12 7.5V3.2M15.8 10.3l4-1.4M14.3 14.7l2.6 3.6M9.7 14.7l-2.6 3.6M8.2 10.3l-4-1.4" /></svg>
 );
-export const interestIcon = { mountain: Mountain, run: Run, globe: Globe, pen: Pen, whisk: Whisk };
+export const interestIcon = { mountain: Mountain, run: Run, globe: Globe, pen: Pen, ball: Ball };

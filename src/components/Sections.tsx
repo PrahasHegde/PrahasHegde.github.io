@@ -1,4 +1,4 @@
-import { about, experience, interests, profile, skills } from '../data/content';
+import { about, experience, gallery, interests, profile, skills } from '../data/content';
 import { copyEmail, mailto, printCV } from '../lib/ui';
 import { interestIcon } from './Icons';
 import { Reveal } from './Reveal';
@@ -9,7 +9,7 @@ const dot = (hue: string) => ({ ['--dot' as string]: `var(--c-${hue})` });
 
 export function Experience() {
   return (
-    <section id="experience" style={{ paddingTop: 24 }}>
+    <section id="experience">
       <div className="wrap">
         <SectionHead n="02" kicker="Experience" title="Where I've worked">
           Four internships, from LLM systems in BMW plants to real-time ML pipelines, roads and online shops.
@@ -34,7 +34,7 @@ export function Experience() {
 
 export function Skills() {
   return (
-    <section id="skills" style={{ paddingTop: 24 }}>
+    <section id="skills">
       <div className="wrap">
         <SectionHead n="03" kicker="Skills" title="What I work with">
           Grouped by what they're for. Each one shows up in the work above.
@@ -54,7 +54,7 @@ export function Skills() {
 
 export function About() {
   return (
-    <section id="about" style={{ paddingTop: 24 }}>
+    <section id="about">
       <div className="wrap">
         <SectionHead n="04" kicker="About" title="A bit about me" />
         <div className="about">
@@ -85,7 +85,7 @@ export function About() {
 
 export function Interests() {
   return (
-    <section id="interests" style={{ paddingTop: 24 }}>
+    <section id="interests">
       <div className="wrap">
         <SectionHead n="05" kicker="Beyond work" title="Off the clock">
           The things that keep me curious, patient and moving, on and off the trail.
@@ -95,7 +95,7 @@ export function Interests() {
             const Icon = interestIcon[it.icon];
             return (
               <Reveal key={it.id} className={`interest${it.photo ? ' has-photo' : ''}`} style={dot(it.hue)} delay={i * 0.07}>
-                {it.photo && <img src={it.photo} alt="" loading="lazy" />}
+                {it.photo && <img src={it.photo} alt={it.alt ?? ''} loading="lazy" style={{ objectPosition: it.pos }} />}
                 <div className="art" aria-hidden="true"><Icon /></div>
                 <div className="body">
                   <span className="chip-ic"><Icon /></span>
@@ -106,6 +106,13 @@ export function Interests() {
               </Reveal>
             );
           })}
+        </div>
+        <div className="gallery" aria-label="Photos from the trail">
+          {gallery.map((g, i) => (
+            <Reveal as="figure" key={g.src} delay={i * 0.08}>
+              <img src={g.src} alt={g.alt} loading="lazy" style={{ objectPosition: g.pos }} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

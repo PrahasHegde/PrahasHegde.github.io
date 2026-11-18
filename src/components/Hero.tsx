@@ -16,7 +16,10 @@ export function Hero() {
       <header className="hero" id="top">
         <div className="wrap">
           <div>
-            <motion.div className="status reveal" {...rise(0)}><i aria-hidden="true" />{profile.status}</motion.div>
+            <motion.div className="status reveal" {...rise(0)}>
+              <span className="av"><img src="/assets/prahas.jpg" alt="" width={30} height={30} /><i aria-hidden="true" /></span>
+              {profile.status}
+            </motion.div>
             <motion.p className="kicker mono reveal" {...rise(1)}>{profile.role} · {profile.city}</motion.p>
             <motion.h1 className="reveal" {...rise(2)}>{profile.name}</motion.h1>
             <motion.p className="lede reveal" {...rise(3)}>
