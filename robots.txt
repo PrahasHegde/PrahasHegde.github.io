@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://prahashegde.github.io/sitemap.xml
